@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "SPA-JS", "SPA-JS.esproj", "{68152C74-B83E-F0E8-3FEB-1B31D58CF716}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68152C74-B83E-F0E8-3FEB-1B31D58CF716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68152C74-B83E-F0E8-3FEB-1B31D58CF716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68152C74-B83E-F0E8-3FEB-1B31D58CF716}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{68152C74-B83E-F0E8-3FEB-1B31D58CF716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68152C74-B83E-F0E8-3FEB-1B31D58CF716}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68152C74-B83E-F0E8-3FEB-1B31D58CF716}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95C5FA31-6AAC-4602-B5B7-44B59619A845}
+	EndGlobalSection
+EndGlobal
