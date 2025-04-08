@@ -1,6 +1,7 @@
 let pageUrls = {
     about: '/index.html?about',
-    contact: '/index.html?contact'
+    contact: '/index.html?contact',
+    gallery: '/index.html?gallery'
 };
 
 function OnStartUp() {
@@ -9,18 +10,25 @@ function OnStartUp() {
 
 OnStartUp();
 
-document.querySelector('#about-link').addEventListener('click', (event) => {
-let stateObj = { page: 'about' };
-document.title = 'About';
-history.pushState(stateObj, "about", "?about");
-RenderAboutPage();
+document.querySelector('#about-link').addEventListener('click', () => {
+    let stateObj = { page: 'about' };
+    document.title = 'About';
+    history.pushState(stateObj, "about", "?about");
+    RenderAboutPage();
 });
 
-document.querySelector('#contact-link').addEventListener('click', (event) => {
-let stateObj = { page: 'contact' };
-document.title = 'Contact';
-history.pushState(stateObj, "contact", "?contact");
-RenderContactPage();
+document.querySelector('#contact-link').addEventListener('click', () => {
+    let stateObj = { page: 'contact' };
+    document.title = 'Contact';
+    history.pushState(stateObj, "contact", "?contact");
+    RenderContactPage();
+});
+
+document.querySelector('#gallery-link').addEventListener('click', () => {
+    let stateObj = { page: 'gallery' };
+    document.title = 'Gallery';
+    history.pushState(stateObj, "gallery", "?gallery");
+    RenderGalleryPage();
 });
 
 document.getElementById('theme-toggle').addEventListener('click', () => {
@@ -51,10 +59,68 @@ function RenderContactPage() {
     });
 }
 
+function RenderGalleryPage() {
+    document.querySelector('main').innerHTML = `
+        <h1 class="title">Gallery</h1>
+        <div id="gallery" class="gallery-grid"></div>
+        <div id="image-modal" class="modal hidden">
+            <img id="modal-img" src="" alt="Full view">
+        </div>
+    `;
+
+    loadGalleryImages();
+    setupModalEvents();
+}
+
 function popStateHandler() {
     let loc = window.location.href.toString().split(window.location.host)[1];
     if (loc === pageUrls.contact) { RenderContactPage(); }
-    if (loc === pageUrls.about) { RenderAboutPage(); }
+    else if (loc === pageUrls.about) { RenderAboutPage(); }
+    else if (loc === pageUrls.gallery) { RenderGalleryPage(); }
+}
+
+function loadGalleryImages() {
+    const imageUrls = [
+        "https://picsum.photos/id/1015/300/200",
+        "https://picsum.photos/id/1025/300/200",
+        "https://picsum.photos/id/1035/300/200",
+        "https://picsum.photos/id/1045/300/200",
+        "https://picsum.photos/id/1055/300/200"
+    ];
+
+    const gallery = document.getElementById('gallery');
+
+    imageUrls.forEach(url => {
+        fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+                const imgURL = URL.createObjectURL(blob);
+                const img = document.createElement('img');
+                img.src = imgURL;
+                img.loading = "lazy";
+                img.classList.add("thumb");
+                img.alt = "Gallery image";
+                img.addEventListener('click', () => openModal(imgURL));
+                gallery.appendChild(img);
+            });
+    });
+}
+
+function openModal(src) {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    modalImg.src = src;
+    modal.classList.remove('hidden');
+}
+
+function setupModalEvents() {
+    const modal = document.getElementById('image-modal');
+    modal.addEventListener('click', (e) => {
+        if (e.target.id !== 'modal-img') {
+            modal.classList.add('hidden');
+            document.getElementById('modal-img').src = '';
+        }
+    });
 }
 
 window.onpopstate = popStateHandler
