@@ -45,17 +45,32 @@ function RenderContactPage() {
     document.querySelector('main').innerHTML = `
         <h1 class="title">Contact with me</h1>
         <form id="contact-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
-        <button type="submit">Send</button>
-        </form>`;
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <div class="g-recaptcha" data-sitekey="your_site_key_here"></div>
+
+            <button type="submit">Send</button>
+        </form>
+    `;
+
     document.getElementById('contact-form').addEventListener('submit', (event) => {
         event.preventDefault();
-        alert('Form submitted!')
+
+        const recaptchaResponse = grecaptcha.getResponse();
+        if (!recaptchaResponse) {
+            alert('Please complete the reCAPTCHA before submitting.');
+            return;
+        }
+
+        alert('Form submitted with reCAPTCHA!');
+        grecaptcha.reset();
     });
 }
 
