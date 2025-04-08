@@ -53,11 +53,11 @@ body.dark-mode {
 }
 
 .gallery-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    margin-top: 2rem;
+    max-width: 900px;
+    margin: 2rem auto;
 }
 
 .thumb {
