@@ -80,14 +80,7 @@ function popStateHandler() {
 }
 
 function loadGalleryImages() {
-    const imageUrls = [
-        "https://picsum.photos/id/1015/300/200",
-        "https://picsum.photos/id/1025/300/200",
-        "https://picsum.photos/id/1035/300/200",
-        "https://picsum.photos/id/1045/300/200",
-        "https://picsum.photos/id/1055/300/200"
-    ];
-
+    const imageUrls = Array.from({ length: 9 }, (_, i) => `images/im${i + 1}.jpg`);
     const gallery = document.getElementById('gallery');
 
     imageUrls.forEach(url => {
