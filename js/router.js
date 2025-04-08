@@ -54,7 +54,7 @@ function RenderContactPage() {
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
 
-            <div class="g-recaptcha" data-sitekey="your_site_key_here"></div>
+            <div class="g-recaptcha" data-sitekey="6LcOQQ4rAAAAAKRiTI0O62JPRAzzi6thxxx9dpkC"></div>
 
             <button type="submit">Send</button>
         </form>
