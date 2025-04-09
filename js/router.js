@@ -54,25 +54,22 @@ function RenderContactPage() {
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
 
-            <div class="g-recaptcha" data-sitekey="6LcOQQ4rAAAAAKRiTI0O62JPRAzzi6thxxx9dpkC"></div>
-
-            <button type="submit">Send</button>
+            <button 
+                class="g-recaptcha"
+                data-sitekey="6LcVhxArAAAAAABRYD5zJjNGeqYxpRa7q6ThMiEms"
+                data-callback="onSubmit"
+                data-action="submit">
+                Send
+            </button>
         </form>
     `;
 
-    document.getElementById('contact-form').addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const recaptchaResponse = grecaptcha.getResponse();
-        if (!recaptchaResponse) {
-            alert('Please complete the reCAPTCHA before submitting.');
-            return;
-        }
-
-        alert('Form submitted with reCAPTCHA!');
-        grecaptcha.reset();
-    });
+    window.onSubmit = function (token) {
+        alert('reCAPTCHA token acquired, form submitted!');
+        document.getElementById('contact-form').submit();
+    };
 }
+
 
 function RenderGalleryPage() {
     document.querySelector('main').innerHTML = `
