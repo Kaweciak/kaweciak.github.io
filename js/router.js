@@ -56,7 +56,7 @@ function RenderContactPage() {
 
             <button 
                 class="g-recaptcha"
-                data-sitekey="6LcVhxArAAAAAABRYD5zJjNGeqYxpRa7q6ThMiEms"
+                data-sitekey="6LcVhxArAAAAABRYD5zJjNGeqYxpRa7q6ThMiEms"
                 data-callback="onSubmit"
                 data-action="submit">
                 Send
